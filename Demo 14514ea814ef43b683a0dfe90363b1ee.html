@@ -1,0 +1,635 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Demo</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="8c8342af-b627-4732-b662-dc0b1ca7fcfb" class="page sans"><header><h1 class="page-title">Demo</h1></header><div class="page-body"><p id="2c20d18a-6d36-4f28-b4e1-e7f020a7fadb" class="">
+</p><p id="35e06e48-0f19-4f85-b4b6-b76b71c44185" class=""><strong>Opening Screen:</strong></p><ul id="46614b8b-7957-4f89-bcd3-fcb0e348fbe0" class="bulleted-list"><li>If the earth was 100 pixels wide, how far would the international space station orbit above earth?</li></ul><ul id="14ae78ba-4d68-49af-800e-60da69700cc3" class="bulleted-list"><li>launch to find out. (zooms into earth, little spaceship launches and orbits earth)<figure id="14514ea8-14ef-43b6-83a0-dfe90363b1ee" class="image"><a href="Demo%2014514ea814ef43b683a0dfe90363b1ee/wireframe.png"><img style="width:3840px" src="Demo%2014514ea814ef43b683a0dfe90363b1ee/wireframe.png"/></a></figure></li></ul><p id="bae3cdb3-5acd-4331-be50-14ea0c65a636" class="">
+</p><p id="29a8e460-8727-4f9c-a1b6-23aa25ad9900" class=""><strong>After launch animation, zooms in to show orbit:</strong></p><ul id="fcfcccde-02b4-46a7-9939-6fe6db68623e" class="bulleted-list"><li>Only about 3 pixels. (That&#x27;s pretty darn close!)</li></ul><ul id="d450026b-5590-4bde-858c-eaa588f71130" class="bulleted-list"><li>Most astronauts never ventured beyond this orbit.</li></ul><ul id="35961dec-582a-473d-bc58-c7211657b16d" class="bulleted-list"><li>Now how far is the moon? (button to travel to the moon)</li></ul><p id="62effaac-a4e4-414f-a139-17ce49582349" class="">
+</p><figure id="7be594ae-287b-49f5-831c-544f983dc4ad" class="image"><a href="Demo%2014514ea814ef43b683a0dfe90363b1ee/Untitled.png"><img style="width:432px" src="Demo%2014514ea814ef43b683a0dfe90363b1ee/Untitled.png"/></a></figure><p id="38e0a27f-6aed-4e55-b88a-4eaed98b6135" class=""><strong>Moon screen:</strong></p><ul id="5a622c6c-6eb8-4d71-b64c-860f3ebd841d" class="bulleted-list"><li>The moon would be about 3000 pixels away.</li></ul><ul id="7b4f2365-e0c7-4b5d-ba60-991cbcabc052" class="bulleted-list"><li>This is the furthest human has ever traveled.</li></ul><ul id="764ebe88-b170-4236-9961-cb01e2337de4" class="bulleted-list"><li>238, 000 miles from the closest McDonald&#x27;s, better wish you packed something good for dinner.</li></ul><ul id="83aa7200-2cef-49dd-ad29-50bfb8945ee2" class="bulleted-list"><li>Let&#x27;s keep moving. (accelerates to mars, move button)</li></ul><p id="27867e28-d0f1-4e6e-9644-3358fa40ddb1" class=""><strong>Travelling Screen:</strong></p><ul id="771850b7-d552-4de7-a361-485424c03bba" class="bulleted-list"><li>Heading towards Mars.</li></ul><ul id="d3fcbc5b-a1a7-4130-a787-9176001eb2a8" class="bulleted-list"><li>It might not seem very fast, but we&#x27;re actually travelling at impossible speeds! Literally. 25 times the speed of light.</li></ul><ul id="65f748a7-df21-4b7e-9a58-79a8b23ab559" class="bulleted-list"><li>Our understanding of physics prohibits anything with mass moving faster than the speed of light. But this is the internet so we&#x27;ll allow it.</li></ul><ul id="b3d4e6b0-e86c-44f9-ab00-8c3f95f03616" class="bulleted-list"><li>In reality, the journey to mars would take about 6 to 8 months.</li></ul><ul id="8fba5ae9-032b-49f9-ac62-fcc00952827b" class="bulleted-list"><li>What can you do to kill 8 months of time traveling in space you ask? Well Skillshare... Just kidding, you&#x27;ve heard enough about them.</li></ul><figure id="4b7f4dc3-1d9c-487a-a981-d0e0cd50abc3"><div class="source"><a href="https://player.vimeo.com/video/530412039?badge=0&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479">https://player.vimeo.com/video/530412039?badge=0&amp;amp;autopause=0&amp;amp;player_id=0&amp;amp;app_id=58479</a></div></figure><p id="a5729487-f205-4b02-a49f-6069b326d211" class=""><strong>Mars Screen:</strong></p><ul id="7ba0b527-cbcd-41a6-9a75-c67a13358123" class="bulleted-list"><li>And finally...just a rock floating 420,000 pixels away, 53 pixels wide.</li></ul><ul id="c41bf693-287a-4fc3-bbfa-fb9ca9dbd786" class="bulleted-list"><li>Few more places to visit...</li></ul><p id="e34934dd-5394-40d7-ae28-f13e899d2945" class="">
+</p><figure id="36278189-e574-4608-880d-1272d240e999" class="image"><a href="Demo%2014514ea814ef43b683a0dfe90363b1ee/wireframe_2.png"><img style="width:3840px" src="Demo%2014514ea814ef43b683a0dfe90363b1ee/wireframe_2.png"/></a></figure><p id="441f38ec-99e2-4528-95cd-c28cbb11ab24" class=""><strong>Travelling Screen:</strong></p><ul id="ce91b62b-c2d9-4658-b279-d65a0a9b3357" class="bulleted-list"><li>Evidence show Mars was once a watery planet with oceans and rivers.</li></ul><ul id="42707a23-3578-4265-8288-355bab701c0c" class="bulleted-list"><li>Some believe it could have harbored life... Guess we&#x27;ll have to wait until Elon Musk gets us there to find out.</li></ul><ul id="a9590654-e777-4c44-b7b3-73b64e74af1b" class="bulleted-list"><li>We&#x27;ve picked up some speed flying pass mars, we&#x27;re now traveling at 10 times the speed of light.</li></ul><p id="c23e93db-7b0d-489a-999f-55f8ecff9549" class=""><strong>Jupiter Screen:</strong></p><ul id="37c4cb12-738b-4a3c-bdc4-008ca42db453" class="bulleted-list"><li>Here comes our first gas giant, Jupiter ()pixels from home and () pixels wide.</li></ul><ul id="22bbd69e-677a-4057-b38b-afe4611ccf59" class="bulleted-list"><li>It&#x27;s moon Europa has an underground ocean. Maybe we can go scuba diving there someday.</li></ul><p id="ecf06f15-a1b6-4c46-9119-adb752f293aa" class=""><strong>Travelling Screen:</strong></p><ul id="f7333989-2add-4806-8326-90d766aff4b1" class="bulleted-list"><li>Coming up is the most beautiful ring in the solar system. Don&#x27;t worry, it&#x27;s only made out of ice so your diamond ring is still special.</li></ul><p id="151a4cce-d140-4f02-b485-8f4597bc20b9" class=""><strong>Saturn Screen:</strong></p><ul id="871e45c1-bedb-4694-b9a4-f708bd6b5ef5" class="bulleted-list"><li>Saturn, ()pixels from away and ()pixels wide. One of it&#x27;s moon, Titan, is the furthest place a human spacecraft has soft-landed on.</li></ul><p id="194c61fc-19bd-43f7-8248-f9d1ec8a88a3" class=""><strong>Travelling Screen:</strong></p><ul id="36a21e7a-43c1-4ca0-b863-1cbb83f94684" class="bulleted-list"><li>On its decent to Titan, the Huygens lander wowed scientists when it transmitted back pictures of rivers and lakes on its surface. Not of water, but liquid methane below -179 degrees.</li></ul><ul id="4b952407-2d5a-4558-9e33-900d0d25926d" class="bulleted-list"><li>Fun fact, Saturn&#x27;s density is so low it would actually float on water, if you can find a big enough lake.</li></ul><p id="da20dc5d-b912-4ceb-9450-dfa5f6a75076" class=""><strong>Neptune Screen:</strong></p><ul id="6e4e516b-d6a6-4274-8634-854c20cc0a3c" class="bulleted-list"><li>Zipping past Uranus, we finally arrive at Neptune, the outer most planet of our solar system.</li></ul><ul id="06792502-76b0-479b-ae4b-41278c490651" class="bulleted-list"><li>We&#x27;ve traveled a total of 2.8 billion miles, or 30 au (astronomical units, 1 au is the distance from Earth to the sun).</li></ul><ul id="6aeab2ed-30f1-4202-85e4-9777405c936f" class="bulleted-list"><li>It took one of the fastest thing humans ever made, the Voyager 2 probe, 12 years to get to this point. And it was traveling 20 times faster than a bullet. (19km/s)</li></ul><ul id="e49d054a-271a-4aad-85a0-6ae7f6d36b2d" class="bulleted-list"><li>Looking back.</li></ul><p id="d643740a-7781-4817-b01a-dfb48c7d9663" class=""><strong>Travelling Screen:</strong></p><ul id="8d24caa7-057d-42d3-893f-eb5e82139b16" class="bulleted-list"><li>Picking up speed again, we now travel at 30 times the speed of light. At this speed, you can go around the earth (7.5*however many times speed of light) times a second.</li></ul><p id="a170e7bd-81b9-4441-b80a-d72526fe0ebc" class=""><strong>Pale blue dot screen:</strong></p><ul id="4d32f8b8-c12b-4dd5-8d79-3ce430008df1" class="bulleted-list"><li>On Feb 14th, 1990, the Voyager 1 probe has well passed any planets and heading towards interstellar space. Under NASA&#x27;s command, it turned around to take one last look at the planet Earth.</li></ul><ul id="29b1d229-c669-463b-9aa6-20193b2da4a1" class="bulleted-list"><li>Came to be known as the Pale Blue Dot, the earth can be seen, less than a pixel in size, floating in a sun beam, ever so insignificant.<figure id="4e26bdf7-c7dc-4a48-b96c-c7c32caca94e" class="image"><a href="Demo%2014514ea814ef43b683a0dfe90363b1ee/polariod_2.png"><img style="width:528px" src="Demo%2014514ea814ef43b683a0dfe90363b1ee/polariod_2.png"/></a></figure></li></ul><p id="8e5f6744-efd7-4655-8c53-303832393157" class="">
+</p><p id="94fac989-1137-4ac6-b194-e31ef784573c" class=""><strong>Interstellar travel:</strong></p><ul id="fae8e2f4-2dc0-481a-b619-2c323e58e41a" class="bulleted-list"><li>We now fast travel for one last time, to visit our closest neighbor, the Alpha Centauri system. We&#x27;ll have to travel about 6000 times the distance we covered so far, so sit tight.</li></ul><ul id="dda369a6-4434-47d7-bfb1-ab9e4f0a9582" class="bulleted-list"><li>Later in his book, astronomer Carl Sagan reflects on the significance of this photo.</li></ul><ul id="593e8072-1e64-49a5-b6bb-6b80895dbaf9" class="bulleted-list"><li>&quot;Look again at that dot. That&#x27;s here. That&#x27;s home. That&#x27;s us. On it, everyone you love, everyone you know, everyone you ever heard of, every human being who ever was, lived out their lives.&quot;</li></ul><ul id="9cc8c3cb-cb97-402a-ab9e-12d87aaa7c2a" class="bulleted-list"><li>Looking back on history, how arrogant it was to believe we&#x27;re the center of the universe.</li></ul><ul id="ddfbeed8-b910-4820-8bc0-266843dbb251" class="bulleted-list"><li>Astronomy has, timer after time, reminded us of our humble place in the grand scale of the universe.</li></ul><p id="668d22f6-b820-4db7-a8bf-635fdc24dd75" class=""><strong>Hubble Ultra Deep Field:</strong></p><ul id="85a034f1-9bf6-4fc2-aaf3-f846d8ff6d94" class="bulleted-list"><li>This is the Hubble Ultra Deep Field, a dark patch of sky covering roughly the area of a pin held at arm&#x27;s length.</li></ul><ul id="501b5454-5e70-45f7-81e0-fbca1f555ae2" class="bulleted-list"><li>In this photo, 10,000 galaxies can be seen. Any one of them, contains as much as 100 billion stars.</li></ul><ul id="2361dbaf-55d2-4a6d-9940-36586f5d84dc" class="bulleted-list"><li>We now believe there are also 100 billion galaxies out there. That&#x27;s 10 sextillion stars! This is what it looks like written out: 10,000,000,000,000,000,000,000.</li></ul><ul id="bfefec95-7efc-4515-a7fe-26d1c0432081" class="bulleted-list"><li>Too big to understand? Try this. For every grain of sand on earth, there is a star out there, as big as our sun. Scientists now believe half of those stars have habitable planets around them.</li></ul><ul id="e68781b4-be66-4015-9ba7-031e24068da1" class="bulleted-list"><li>With that in mind, how incredibly arrogant it would be to think that Earth is the only planet where life exhists.</li></ul><ul id="33d44e09-18e5-4600-b166-45df0591b45c" class="bulleted-list"><li>Pick a galaxy in this photo. Imagine there could be the most amazing things we have never even dreamed of. There could be civilizations of all proportions and there could be the most beautiful sights you have ever seen.<figure id="89bfa430-b433-4ff9-9efe-6fe20b39e2f2" class="image"><a href="Demo%2014514ea814ef43b683a0dfe90363b1ee/1920px-Hubble_ultra_deep_field_high_rez_edit1.jpg"><img style="width:1920px" src="Demo%2014514ea814ef43b683a0dfe90363b1ee/1920px-Hubble_ultra_deep_field_high_rez_edit1.jpg"/></a></figure></li></ul><p id="fa8a01ec-5a5a-4317-a9ce-79b30ca69411" class="">
+</p><p id="17b4e7ca-4331-4681-908d-1055fabf4678" class=""><strong>Distance Comparison:</strong></p><ul id="df4525f0-b6a5-42e5-81f2-b543a618dd06" class="bulleted-list"><li>And finally we arrive at our closest star, Proxima Centauri. 4.2 light years away. If the earth was 100 pixels wide, the distance we just traveled to scale would stretch 2 times around the Earth.</li></ul><ul id="20d73e17-4d70-4ece-b840-9df3446128e3" class="bulleted-list"><li>And this is how far that is compared to the our milky way galaxy.</li></ul><ul id="320bf2da-91ff-4bcc-88cb-a1c4e8b318e2" class="bulleted-list"><li>Yep, we virtually didn&#x27;t move at all. In fact, all the stars you can see in the night sky are only this far away.<figure id="ecd476d5-1423-4ad6-ac76-515f5b0b6922" class="image"><a href="Demo%2014514ea814ef43b683a0dfe90363b1ee/moved_distance.png"><img style="width:1024px" src="Demo%2014514ea814ef43b683a0dfe90363b1ee/moved_distance.png"/></a></figure></li></ul><p id="4382b8d5-6966-44af-adb5-230de844358f" class="">
+</p><p id="c47f970d-7e0f-4936-8c3e-de34bfbaf8bd" class=""><strong>Ending:</strong></p><ul id="c142f894-9e01-43de-a2b6-e968f9146fdb" class="bulleted-list"><li>Space is huge, to say the least, but it doesn&#x27;t mean our actions are meaningless. It means that we are to cherish our only home, and to also understand our humble position in the vastness of the universe. To quote Carl Sagan once again, &quot;It underscores our responsibility to deal more kindly with one another, and to preserve and cherish the pale blue dot, the only home we&#x27;ve ever known.&quot;</li></ul><p id="a87ad7f4-7974-4cd8-97a0-a32d1cb6e564" class="">
+</p></div></article></body></html>
